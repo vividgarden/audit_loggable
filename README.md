@@ -1,5 +1,7 @@
 # AuditLoggable
 
+[![Build](https://github.com/vividgarden/audit_loggable/actions/workflows/ruby.yml/badge.svg)](https://github.com/vividgarden/audit_loggable/actions/workflows/ruby.yml)
+
 AuditLoggable is a Rails plugin gem that logs changes to your models. AuditLoggable can also record who made those changes.  
 AuditLoggable is inspired by [Audited](https://github.com/collectiveidea/audited). However AuditLoggable logs to a JSONL file instead of RDB table.
 
