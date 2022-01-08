@@ -14,18 +14,19 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: ['2.5', '2.6', '2.7', '3.0']
-        activerecord: ['6.0', '6.1']
+        ruby: ['2.5', '2.6', '2.7', '3.0', '3.1']
+        activerecord: ['6.0', '6.1', '7.0']
         experimental: [false]
         exclude:
-        - ruby: '3.0'
+        - ruby: '2.5'
+          activerecord: '7.0'
+          experimental: false
+        - ruby: '2.6'
+          activerecord: '7.0'
+          experimental: false
+        - ruby: '3.1'
           activerecord: '6.0'
           experimental: false
-        include:
-        # waiting for a release of https://github.com/rails/rails/pull/39697
-        - ruby: '3.0'
-          activerecord: '6.0'
-          experimental: true
     continue-on-error: ${{ matrix.experimental }}
     env:
       APPRAISAL: rails_${{ matrix.activerecord }}
