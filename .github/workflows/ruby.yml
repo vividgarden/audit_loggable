@@ -24,17 +24,9 @@ jobs:
         - ruby: '2.6'
           activerecord: '7.0'
           experimental: false
-        - ruby: '3.0'
-          activerecord: '6.0'
-          experimental: false
         - ruby: '3.1'
           activerecord: '6.0'
           experimental: false
-        include:
-        # waiting for a release of https://github.com/rails/rails/pull/39697
-        - ruby: '3.0'
-          activerecord: '6.0'
-          experimental: true
     continue-on-error: ${{ matrix.experimental }}
     env:
       APPRAISAL: rails_${{ matrix.activerecord }}
