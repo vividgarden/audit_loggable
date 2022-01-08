@@ -35,9 +35,6 @@ jobs:
         - ruby: '3.0'
           activerecord: '6.0'
           experimental: true
-        - ruby: '3.1'
-          activerecord: '6.0'
-          experimental: true
     continue-on-error: ${{ matrix.experimental }}
     env:
       APPRAISAL: rails_${{ matrix.activerecord }}
