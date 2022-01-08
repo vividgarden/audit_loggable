@@ -15,9 +15,15 @@ jobs:
     strategy:
       matrix:
         ruby: ['2.5', '2.6', '2.7', '3.0']
-        activerecord: ['6.0', '6.1']
+        activerecord: ['6.0', '6.1', '7.0']
         experimental: [false]
         exclude:
+        - ruby: '2.5'
+          activerecord: '7.0'
+          experimental: false
+        - ruby: '2.6'
+          activerecord: '7.0'
+          experimental: false
         - ruby: '3.0'
           activerecord: '6.0'
           experimental: false
