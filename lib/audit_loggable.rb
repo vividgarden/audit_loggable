@@ -21,7 +21,7 @@ module AuditLoggable
     attr_reader :logger
 
     delegate :audit_log_path, :audit_log_shift_age, :audit_log_shift_size, :audit_log_shift_period_suffix,
-             :auditing_enabled,
+             :auditing_enabled, :audit_log_timezone,
              to: :configuration
 
     def configure
@@ -40,7 +40,8 @@ module AuditLoggable
         self.audit_log_path,
         shift_age:           self.audit_log_shift_age,
         shift_size:          self.audit_log_shift_size,
-        shift_period_suffix: self.audit_log_shift_period_suffix
+        shift_period_suffix: self.audit_log_shift_period_suffix,
+        timezone:            self.audit_log_timezone
       )
     end
   end

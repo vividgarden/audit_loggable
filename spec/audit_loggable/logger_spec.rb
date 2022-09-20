@@ -7,7 +7,8 @@ RSpec.describe AuditLoggable::Logger do
         ::AuditLoggable.audit_log_path,
         shift_age:           ::AuditLoggable.audit_log_shift_age,
         shift_size:          ::AuditLoggable.audit_log_shift_size,
-        shift_period_suffix: ::AuditLoggable.audit_log_shift_period_suffix
+        shift_period_suffix: ::AuditLoggable.audit_log_shift_period_suffix,
+        timezone:            ::AuditLoggable.audit_log_timezone
       )
     end
 
