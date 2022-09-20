@@ -4,7 +4,7 @@ RSpec.describe AuditLoggable::AuditRecord do
   describe "#as_json" do
     subject { audit_record.as_json }
 
-    let!(:action) { %i[create update destroy] }
+    let!(:action) { %i[create update destroy].sample }
     let!(:remote_address) { ["127.0.0.1", nil].sample }
     let!(:request_uuid) { [SecureRandom.uuid, nil].sample }
 
