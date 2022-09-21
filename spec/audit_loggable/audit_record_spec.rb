@@ -4,7 +4,7 @@ RSpec.describe AuditLoggable::AuditRecord do
   describe "#as_json" do
     subject { audit_record.as_json }
 
-    let!(:action) { %i[create update destroy] }
+    let!(:action) { %i[create update destroy].sample }
     let!(:remote_address) { ["127.0.0.1", nil].sample }
     let!(:request_uuid) { [SecureRandom.uuid, nil].sample }
 
@@ -23,12 +23,12 @@ RSpec.describe AuditLoggable::AuditRecord do
       it "returns a hash representing audit record that user is setted" do
         expect(subject).to eq(
           {
-            auditable:      { id: 1, type: "Post" },
-            user:           { id: 2, type: "User" },
-            action:         action,
-            changes:        %({"foo":[1,2],"bar":["before","after"]}),
-            remote_address: remote_address,
-            request_uuid:   request_uuid
+            "auditable"      => { "id" => 1, "type" => "Post" },
+            "user"           => { "id" => 2, "type" => "User" },
+            "action"         => action.to_s,
+            "changes"        => %({"foo":[1,2],"bar":["before","after"]}),
+            "remote_address" => remote_address,
+            "request_uuid"   => request_uuid
           }
         )
       end
@@ -49,12 +49,12 @@ RSpec.describe AuditLoggable::AuditRecord do
       it "returns a hash representing audit record that user is nil" do
         expect(subject).to eq(
           {
-            auditable:      { id: 1, type: "Post" },
-            user:           nil,
-            action:         action,
-            changes:        %({"foo":[1,2],"bar":["before","after"]}),
-            remote_address: remote_address,
-            request_uuid:   request_uuid
+            "auditable"      => { "id" => 1, "type" => "Post" },
+            "user"           => nil,
+            "action"         => action.to_s,
+            "changes"        => %({"foo":[1,2],"bar":["before","after"]}),
+            "remote_address" => remote_address,
+            "request_uuid"   => request_uuid
           }
         )
       end

@@ -11,7 +11,7 @@ module AuditLoggable
       @request_uuid = request_uuid
     end
 
-    def as_json(*)
+    def as_json(options = nil)
       {
         auditable: { id: auditable.id, type: auditable.class.polymorphic_name },
         user: user ? { id: user.id, type: user.class.polymorphic_name } : nil,
@@ -19,7 +19,7 @@ module AuditLoggable
         changes: changeset.to_json, # serialize to JSON string
         remote_address: remote_address,
         request_uuid: request_uuid
-      }
+      }.as_json(options)
     end
 
     private
