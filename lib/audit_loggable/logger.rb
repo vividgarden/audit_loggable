@@ -5,8 +5,22 @@ require "logger"
 module AuditLoggable
   class Logger
     class JSONFormatter < ::Logger::Formatter
+      attr_reader :timezone
+
+      def initialize(timezone:)
+        raise ArgumentError unless %i[utc local].include? timezone
+
+        @timezone = timezone
+      end
+
       def call(_severity, time, _progname, message)
-        h = { timestamp: time, record: message }
+        timestamp =
+          case timezone
+          when :utc then time.getutc
+          when :local then time.getlocal
+          end
+
+        h = { timestamp: timestamp, record: message }
         "#{h.to_json}\n"
       end
     end
@@ -20,8 +34,8 @@ module AuditLoggable
     end
 
     class InternalLogger < ::Logger
-      def initialize(logdev, shift_age:, shift_size:, shift_period_suffix:)
-        super(nil, level: :info, formatter: JSONFormatter.new)
+      def initialize(logdev, shift_age:, shift_size:, shift_period_suffix:, timezone:)
+        super(nil, level: :info, formatter: JSONFormatter.new(timezone: timezone))
 
         return unless logdev
 

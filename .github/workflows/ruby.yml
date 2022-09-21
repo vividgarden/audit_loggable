@@ -35,4 +35,6 @@ jobs:
         bundle install
         bundle exec appraisal $APPRAISAL bundle install
     - name: Run tests
+      env:
+        TZ: "Asia/Tokyo"
       run: bundle exec appraisal $APPRAISAL rake

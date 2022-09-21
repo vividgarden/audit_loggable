@@ -44,6 +44,7 @@ Options
 | `audit_log_shift_age`           | Integer or String | Same as `shift_age` option of `Logger` class of stdlib.            | `0`       |
 | `audit_log_shift_size`          | Integer           | Same as `shift_size` option of `Logger` class of stdlib.           | `1048576` |
 | `audit_log_shift_period_suffix` | String            | Same as `shift_period_suffix` options of `Logger` class of stdlib. | `%Y%m%d`  |
+| `audit_log_timezone`            | Enum              | The timezone of timestamp. Any value of `:local` or `:utc`.        | `local`  |
 
 ### Extend your model by `AuditLoggable::Extension`
 ``` ruby
