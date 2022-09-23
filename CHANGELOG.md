@@ -1,5 +1,10 @@
 ## Unreleased
 
+### Changes
+
+* Make configurable timezone of timestamp
+* Change `AuditRecord#as_json` to accept the options of `Hash#as_json`
+
 ### Misc
 
 * CI against for Rails 7.0
