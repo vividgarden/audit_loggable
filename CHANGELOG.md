@@ -1,5 +1,8 @@
 ## Unreleased
 
+
+## 1.1.0 (2022-09-23)
+
 ### Changes
 
 * Make configurable timezone of timestamp
